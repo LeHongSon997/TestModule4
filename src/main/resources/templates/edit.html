@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit city</title>
+</head>
+<body>
+<h1>Edit city</h1>
+<p>
+    <a href="/citys">Back to cities list</a>
+</p>
+<form th:object="${city}" method="post" enctype="multipart/form-data">
+    <fielset>
+        <legend>City information</legend>
+        <table>
+            <tr>
+                <td>City Name: </td>
+                <td><input th:field="*{cityName}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('cityName')}" th:errors="*{cityName}"></td>
+            </tr>
+            <tr>
+                <td>Area: </td>
+                <td><input th:field="*{area}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></td>
+            </tr>
+            <tr>
+                <td>Population: </td>
+                <td><input th:field="*{population}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('population')}" th:errors="*{population}"></td>
+            </tr>
+            <tr>
+                <td>GDP: </td>
+                <td><input th:field="*{GDP}"></td>
+                <td style="color: red" th:if="${#fields.hasErrors('GDP')}" th:errors="*{GDP}"></td>
+            </tr>
+            <tr>
+                <td>Description: </td>
+                <td><input th:field="*{description}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <select th:field="*{country}">
+                        <option th:each="c: ${country}" th:text="${c.name}" th:value="${c.id}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Update city"></td>
+            </tr>
+
+        </table>
+    </fielset>
+</form>
+</body>
+</html>
